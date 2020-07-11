@@ -1,5 +1,5 @@
 getwd()
-setwd("C:\\Users\\Decemberkms.000\\books\\R\\R_Start")
+setwd("C:\\Users\\Min\\books\\R_Start")
 
 util <- read.csv("P3-Machine-Utilization.csv")
 
@@ -60,20 +60,57 @@ list_rl1
 list_rl1 <- list(Machine ="RL1", Stats=util_stats_rl1, LowThreshold=util_under_90_flag)
 summary(list_rl1)
 
-# how to do it in Data frame?
+
+#---------------------- extracing components of a list
+# three ways 
+# [] - will always return a list
+# [[]] will always return the actual object
+# $ - same as [[]]
+
+list_rl1[1] # still a list
+list_rl1[[1]]  # now it is a vertor 
+list_rl1$Machine # same as above
+
+list_rl1[2]
+typeof(list_rl1[2]) # list
+list_rl1[[2]] 
+typeof(list_rl1[[2]])  # double
+list_rl1$Stats
+typeof(list_rl1$Stats)  # double
+
+# how would you access the 3rd element?  the point is to get to the vector not a list
+list_rl1[[2]][3]
+list_rl1$Stats[3]
+
+list_rl1[[3]]
 
 
 
+# adding and deleting list components
+list_rl1
+list_rl1[4] <- "New Information"
+list_rl1
+# another way to add
+list_rl1$UnknownHours <- RL1[is.na(RL1$Utilisation),"PosixTime"]
+# list_rl1[7] <- NULL
+# list_rl1[6] <- NULL
+list_rl1
 
+# NOTICE :L numeration has shifted so if you delete something in the middle, the next one has shifted to the front not like data frame
 
+# add anther component
+list_rl1$Data <- RL1
+list_rl1
+summary(list_rl1)
+str(list_rl1)
 
+list_rl1[[5]][1]
+list_rl1$UnknownHours[1]
 
-
-
-
-
-
-
-
-
+# subsetting alist 
+list_rl1[1:3]
+list_rl1[c(1,5)]
+sublist_rl1 <- list_rl1[c("Machine", "Stats")]
+sublist_rl1[[2]][2]
+######## double square brackets are NOT for subsetting ##########
 

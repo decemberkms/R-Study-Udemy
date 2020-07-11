@@ -114,3 +114,17 @@ sublist_rl1 <- list_rl1[c("Machine", "Stats")]
 sublist_rl1[[2]][2]
 ######## double square brackets are NOT for subsetting ##########
 
+library("ggplot2")
+p <- ggplot(data=util)
+p + geom_line(aes(x=PosixTime, y=Utilisation,
+                  color=Machine), size=1.2) + facet_grid(Machine~.) +
+  geom_hline(yintercept=0.9, color="Gray", size=1.2, linetype=3)
+# aes mappint variable
+myplot <- p + geom_line(aes(x=PosixTime, y=Utilisation,
+                            color=Machine), size=1.2) + facet_grid(Machine~.) +
+  geom_hline(yintercept=0.9, color="Gray", size=1.2, linetype=3)
+
+list_rl1$Plot <- myplot # you can put a plot in a list
+list_rl1
+summary(list_rl1)
+str(list_rl1)

@@ -90,7 +90,7 @@ fin[which(fin$Employees ==45),]
 
 
 # is.na()
-head(fin,24)
+  head(fin,24)
 fin[fin$Expenses == NA,] # you cannot compare NA with anything
 
 a <- c(1,24,543,NA,76,45,NA)

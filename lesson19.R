@@ -30,3 +30,17 @@ Weather
 Weather[3]
 Weather[[3]]
 Weather$Houston
+apply(Weather$Houston,1,mean) # row
+apply(Weather$Houston,1,max)
+apply(Weather$Houston,2,max) # column
+# The apply family
+## apply - use on a matrix : either the rows or the columns
+## tapply - use on a vector to extract subgroups and apply a function to them
+## by - use on data frames. Same concepts as in group by in SQL
+## eapply -use on a environment(E)
+## lapply - apply a fuction to elemernts of a list(L)
+## sapply - a version of lapply. Can simplify (S) the result so it's not presetned as a list
+## vapply - has a pre-specified type of return value(V)
+## replicate -run a fuction several times. Usually with generation of random value
+## mapply -multivariate Versiob of sapply
+## rapply - recursive version opf lapply

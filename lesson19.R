@@ -44,3 +44,55 @@ apply(Weather$Houston,2,max) # column
 ## replicate -run a fuction several times. Usually with generation of random value
 ## mapply -multivariate Versiob of sapply
 ## rapply - recursive version opf lapply
+
+
+
+# what is apply ?
+?apply()
+Chicago
+apply(Chicago, 1, mean)
+
+#check
+Chicago["DaysWithPrecip",]
+mean(Chicago["DaysWithPrecip",])
+
+
+#analyze one city
+Chicago
+apply(Chicago, 1, max)
+apply(Chicago, 1, min)
+
+#for practice:
+apply(Chicago, 2, max)
+apply(Chicago, 2, min)
+
+#Compare
+apply(Chicago, 1, mean)
+apply(NewYork, 1, mean)
+apply(Houston, 1, mean)
+apply(SanFrancisco, 1, mean)
+                                
+#---------------- loop instead of apply
+Chicago
+# find the mean of every row
+# 1. via loo
+output <- NULL #preparing an empty vector
+for (i in 1:5){
+  output[i] <- mean(Chicago[i,])
+}
+output
+names(output) <- rownames(Chicago)
+output
+
+# 2. via apply
+apply(Chicago, 1, mean)
+
+
+
+
+
+
+
+
+
+

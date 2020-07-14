@@ -88,11 +88,24 @@ output
 apply(Chicago, 1, mean)
 
 
+#------------------- lapply
+Chicago
+?lapply
+#ex1
+t(Chicago) #transpose
+Weather
+lapply(Weather,t) # apply lapply to a list
+mynewlist <- lapply(Weather,t)
 
+#ex2
+lapply(Weather, rbind, NewRow=1:12) # how to add a new row to every element in a list
 
-
-
-
-
+#ex3
+?rowMeans
+rowMeans(Chicago) # identical to :apply(Chicago, 1, mean) - predefined function in R
+lapply(Weather, rowMeans) # better than 4 lines above
+lapply(Weather, colMeans)
+lapply(Weather, rowSums)
+lapply(Weather, colSums)
 
 

@@ -109,3 +109,57 @@ lapply(Weather, rowSums)
 lapply(Weather, colSums)
 
 
+#combining lapply with the [] operator
+Weather$Chicago[1,1] # the same
+Weather[[1]][1,1] # the same
+
+lapply(Weather,"[", 1, 1) # way of picking things from list using lapply
+lapply(Weather,"[", 1, )
+lapply(Weather,"[", , 3)
+
+
+# ----------- adding your own function
+lapply(Weather, rowMeans)
+lapply(Weather, rowMeans)$Chicago
+Weather
+lapply(Weather, function(x) x[1,])
+lapply(Weather, function(x) x[5,])
+lapply(Weather, function(x) x[,12])
+Weather
+lapply(Weather, function(z) z[1,] - z[2,])
+lapply(Weather, function(z) round((z[1,] - z[2,])/z[2,],2))
+
+
+## using sapply
+?sapply
+Weather
+# avg high for July
+lapply(Weather, "[", 1, 7) # return a list
+sapply(Weather, "[", 1, 7) # return a vector:it may return a vector or matrix depending on what process I use
+
+#Avg for 4th quarter:
+lapply(Weather, "[", 1, 10:12) # return a list
+sapply(Weather, "[", 1, 10:12) # return matrix
+
+#anther 
+lapply(Weather, rowMeans)
+round(sapply(Weather, rowMeans), 2)
+
+# anther
+lapply(Weather, function(z) round((z[1,] - z[2,])/z[2,],2))
+sapply(Weather, function(z) round((z[1,] - z[2,])/z[2,],2))
+sapply(Weather, function(z) round((z[1,] - z[2,])/z[2,],2), simplify=FALSE) # same as lapply
+
+#-------------------------Nesting Apply functions
+Weather
+lapply(Weather, rowMeans)
+Chicago
+apply(Chicago, 1, max)
+
+#apply across whole list
+lapply(Weather, apply, 1, max) # the same
+lapply(Weather, function(x) apply(x, 1, max)) # the same
+
+#tidy up
+sapply(Weather, apply, 1, max) 
+sapply(Weather, apply, 1, min) 
